@@ -3,8 +3,9 @@
 		MOV		R2, #10            ;LOOP VAI RODAR POR 10 VEZES
 		MOV		R3, #0x00001000
 		MOV		R5, R1
-		STR		R5, [R3, #0x01F4]      ;armazena o valor que ta em r5 no endereço de memoria igual a r3 deslocado de 500: (66036) EM HEX 0X01F4
-		MOV		R6,#0x80000000     ;VALOR 2MILHOESBLABLABLA
+		MOV		R11, #0x01F4
+		STR		R5, [R3, R11]      ;armazena o valor que ta em r5 no endereço de memoria igual a r3 deslocado de 500: (66036) EM HEX 0X01F4
+		MOV		R6, #0x80000000     ;VALOR 2MILHOESBLABLABLA
 		B		LOOP
 		
 		
@@ -13,7 +14,8 @@ LOOP
 		BEQ		FINAL          ;SE FOR IGUAL, DESVIA PARA END
 		LSL		R5, R5, #1   ;FAZ PG NO CONTEÚDO DE R5
 		TST		R5, R6       ;TESTA SE R5 = R6
-		STR		R5,[R5, #4]  ;GUARDA O VALOR DE R5,NO ENDEREÇO DE R3 DESLOCADO EM 4 BITS
+		ADD		R11, R11, #4
+		STR		R5,[R3, R11]  ;GUARDA O VALOR DE R5,NO ENDEREÇO DE R5 DESLOCADO EM 4 BITS
 		ADD		R0, R0, #1
 		B		LOOP
 FINAL
