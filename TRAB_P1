@@ -1,21 +1,21 @@
-		MOV		R0, #1             ;+1 ATÉ CHEGAR A 10
-		MOV		R1, #4             ;numero base escolhido pela dupla
-		MOV		R2, #10            ;LOOP VAI RODAR POR 10 VEZES
-		MOV		R3, #0x00001000    ;endereço de memoria onde começa a armazenar dados
-		MOV		R5, R1		    ;move o valor de r1 para r5
+		MOV		R7, #1             ;+1 ATÉ CHEGAR A 10
+		MOV		R8, #4             ;numero base escolhido pela dupla
+		MOV		R9, #10            ;LOOP VAI RODAR POR 10 VEZES
+		MOV		R10, #0x00001000    ;endereço de memoria onde começa a armazenar dados
+		MOV		R5, R8		    ;move o valor de r1 para r5
 		MOV		R4, #0x01F4	    ;desloca o endereço de memória em #500
-		STR		R5, [R3, R4]       ;armazena o valor de r5 no endereço de memoria = r3 + #500 (66036) EM HEX 0X01F4
+		STR		R5, [R10, R4]       ;armazena o valor de r5 no endereço de memoria = r3 + #500 (66036) EM HEX 0X01F4
 		MOV		R6, #0x80000000    ;VALOR 2MILHOESBLABLABLA
 		B		LOOP
 		
 		
 LOOP
-		CMP		R0,R2           ;SE FOR DIFERENTE, FAZ A FUNCAO
+		CMP		R7,R9           ;SE FOR DIFERENTE, FAZ A FUNCAO
 		BEQ		FINAL           ;SE FOR IGUAL, DESVIA PARA FINAL
 		LSL		R5, R5, #1      ;FAZ PG NO CONTEÚDO DE R5
 		TST		R5, R6          ;TESTA OS VALORES R5 E R6
 		ADD		R4, R4, #4      ;desloca o endereço de memoria em 4
-		STR		R5,[R3, R4]     ;GUARDA O VALOR DE R5,NO ENDEREÇO DE R3 DESLOCADO EM 4 BITS
-		ADD		R0, R0, #1      ;adiciona 1 ao R0 para o loop
+		STR		R5,[R10, R4]     ;GUARDA O VALOR DE R5,NO ENDEREÇO DE R3 DESLOCADO EM 4 BITS
+		ADD		R7, R7, #1      ;adiciona 1 ao R0 para o loop
 		B		LOOP
 FINAL
