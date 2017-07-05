@@ -1,11 +1,11 @@
-		MOV		R7, #1             ;+1 ATÉ CHEGAR A 10
-		MOV		R8, #4             ;numero base escolhido pela dupla
-		MOV		R9, #10            ;LOOP VAI RODAR POR 10 VEZES
-		MOV		R10, #0x00001000    ;endereço de memoria onde começa a armazenar dados
-		MOV		R5, R8		    ;move o valor de r1 para r5
-		MOV		R4, #0x01F4	    ;desloca o endereço de memória em #500
+		ADD		R7, R7, #1             ;+1 ATÉ CHEGAR A 10
+		ADD		R8, R8, #4             ;numero base escolhido pela dupla
+		ADD		R9, R9, #10            ;LOOP VAI RODAR POR 10 VEZES
+		ADD		R10, R10, #0x00001000    ;endereço de memoria onde começa a armazenar dados
+		ADD		R5, R5, R8		    ;move o valor de r1 para r5
+		ADD		R4, R4, #0x01F4	    ;desloca o endereço de memória em #500
 		STR		R5, [R10, R4]       ;armazena o valor de r5 no endereço de memoria = r3 + #500 (66036) EM HEX 0X01F4
-		MOV		R6, #0x80000000    ;VALOR 2MILHOESBLABLABLA
+		ADD		R6, R6, #0x80000000    ;VALOR 2MILHOESBLABLABLA
 		B		LOOP
 		
 		
