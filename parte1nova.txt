@@ -1,0 +1,41 @@
+﻿	.text
+	
+	.global _start
+
+	_start:			@label não são obrigatórias
+		
+	AND		R0,R0,#0     
+	        ;zera tudo	
+	ADD		R8,R0,#4     
+	        ;numero base = 4 em R8	
+	ADD		R4,R0, #500   
+		;coloca o valor #500 em R4
+	AND		R7,R7,#0          	;contador loop 
+		
+	AND		R11,R11,#0 
+		;R11 armazenara os resultados da pg
+	ADD		R6, R0, #2147483648	;coloca em r6 o valor para TST
+	STR		R8,[R4,#0] 		;armazena o numero de base no endereco de mem #500
+
+LOOP:
+		
+	CMP		R7,#9 
+			;compara o contador com #9 para loop
+	BEQ		FINAL 
+			;se for igual, pula pro final
+	ADD		R7,R7,#1 
+		;contador +1	
+	ADD		R11,R8,R8
+  		;armazena os dados da pg		
+	ADD		R4,R4,#4 
+		;desloca em 4 o endereco de memoria	
+	STR		R11,[R4,#0] 
+		;armazena o conteudo de r11 no endereco de memoria igual ao valor contido em r4	
+	TST		
+R11, R6			;testa o resultado da pg com o valor de 2milhoes
+	B		LOOP
+
+
+FINAL:
+		
+	LDR		R5, [R4,#0] 
