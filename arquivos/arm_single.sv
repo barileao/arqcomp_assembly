@@ -100,10 +100,10 @@ module testbench();
   always @(negedge clk)
     begin
       if(MemWrite) begin
-        if(DataAdr === 90 & WriteData === 2048) begin // ****Alterado para o endereco final de memoria****
+        if(DataAdr === 41 & WriteData === 2048) begin // ****Alterado para o endereco final de memoria****
           $display("Simulation succeeded!!!");
           $stop;
-        end else if (DataAdr !== 96) begin
+        end else if (DataAdr !== 41) begin
           $display("Simulation failed");
           $stop;
         end
